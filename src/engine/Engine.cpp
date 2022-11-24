@@ -4,6 +4,9 @@
 #include "Input.h"
 #include "Pathing.h"
 
+// DEBUGGING
+#include "../Tester.h"
+
 bool Engine::Initialize()
 {
 	bool globals = globals::Initialize();
@@ -39,6 +42,10 @@ bool Engine::Initialize()
 	m_Music.PlayMusic();
 	m_SoundEffect.PlaySound();
 	m_IsPaused = false;
+
+	// DEBUGGING 
+	BtTesting* test_class = new BtTesting();
+	test_class->Initialize();
 
 	return renderer && sound && font && input && globals && texture && pathing; 
 }

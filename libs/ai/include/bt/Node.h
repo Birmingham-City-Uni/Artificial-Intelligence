@@ -2,6 +2,9 @@
 #include "../Dll.h"
 #include <vector>
 
+// DEBUGGING
+#include <iostream>
+
 namespace ai {
 	namespace bt {
 
@@ -12,9 +15,22 @@ namespace ai {
 			Error
 		};
 
-		class Node {
+		class INode {
 		public:
-			Node() {}
+			virtual Status Update() = 0;
+		};
+
+		class Node {
+		public: 
+			Status Update() { 
+				// DEBUGGING
+				std::cout << "Node!\n";
+				return Status::Error; 
+			}
+		};
+
+		class AI_API NodeWrapper : public Node{
+		public:
 			Status Update() { return Status::Error; }
 		};
 
