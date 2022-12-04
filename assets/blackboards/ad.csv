@@ -1,0 +1,6 @@
+float,basic_cooldown,3
+float,test_float,1
+float,update_timer,1
+bool,test_bool,0
+int,ammo_size,3
+int,test_int,10

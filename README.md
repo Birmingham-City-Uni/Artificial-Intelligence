@@ -1,1 +1,11 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-c66648af7eb3fe8bc4f294546bfd86ef473780cde1dea487d3c4ff354943c9ae.svg)](https://classroom.github.com/online_ide?assignment_repo_id=8599972&assignment_repo_type=AssignmentRepo)
+# Artificial-Intelligence
+
+## Pulling the repo 
+`git clone https://github.com/Birmingham-City-Uni/Artificial-Intelligence.git`
+`git submodule update --init --recursive`
+
+## Building the repo
+`run BUILD.bat`  
+
+## Assets 
+Art - https://0x72.itch.io/dungeontileset-ii
