@@ -36,10 +36,10 @@ add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
         "${PROJECT_SOURCE_DIR}/library_binaries/bin/$<CONFIGURATION>"
         $<TARGET_FILE_DIR:${PROJECT_NAME}>)
 
-target_link_libraries(ArtificialIntelligence ${SDL2_IMAGE_LIBRARIES})
-target_link_libraries(ArtificialIntelligence ${SDL2_MIXER_LIBRARIES})
-target_link_libraries(ArtificialIntelligence ${SDL2_TTF_LIBRARIES})
-target_link_libraries(ArtificialIntelligence ${SDL2_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} ${SDL2_IMAGE_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} ${SDL2_MIXER_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} ${SDL2_TTF_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARIES})
 target_link_libraries(${PROJECT_NAME} $<$<CONFIG:Debug>:${LIBS_DEBUG}> 
         $<$<CONFIG:Release>:${LIBS_RELEASE}>)
 
