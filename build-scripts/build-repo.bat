@@ -1,3 +1,4 @@
+cd ../
 set working_dir=%~dp0
 set library_binaries=%working_dir%library_binaries
 
