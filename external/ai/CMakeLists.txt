@@ -4,8 +4,10 @@ set (CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DLOGGING")
 set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} -DLOGGING")
 file(GLOB_RECURSE SOURCE "include/*.*")
-add_library(ArtificialIntelligenceDLL SHARED ${SOURCE})
-set_target_properties(  ArtificialIntelligenceDLL
+
+add_library(${PROJECT_NAME} SHARED ${SOURCE})
+
+set_target_properties(${PROJECT_NAME}
   PROPERTIES
   ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/../library_binaries/lib"
   LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/../library_binaries/lib"

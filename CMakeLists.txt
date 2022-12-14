@@ -18,11 +18,6 @@ include_directories(${PROJECT_SOURCE_DIR}/library_binaries/include/SDL2)
 file(GLOB_RECURSE SOURCE "src/*.*")
 file(GLOB DLLS "library_binaries/bin/*.dll")
     
-file(COPY ${DLLS} DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/build/Release)
-file(COPY ${DLLS} DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/build/Debug)
-file(COPY ${DLLS} DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/build/MinSizeRel)
-file(COPY ${DLLS} DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/build/RelWithDebInfo)
-
 add_executable (${PROJECT_NAME} ${SOURCE})
 
 set(SDL2_IMAGE_LIBRARIES "${PROJECT_SOURCE_DIR}/library_binaries/lib/SDL2_image.lib")
@@ -30,6 +25,11 @@ set(SDL2_MIXER_LIBRARIES "${PROJECT_SOURCE_DIR}/library_binaries/lib/SDL2_mixer.
 set(SDL2_TTF_LIBRARIES "${PROJECT_SOURCE_DIR}/library_binaries/lib/SDL2_ttf.lib")
 set(LIBS_DEBUG "${PROJECT_SOURCE_DIR}/library_binaries/lib/Debug/ArtificialIntelligenceDLL.lib") 
 set(LIBS_RELEASE "${PROJECT_SOURCE_DIR}/library_binaries/lib/Release/ArtificialIntelligenceDLL.lib") 
+
+add_custom_command(TARGET ${PROJECT_NAME} PRE_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+        "${PROJECT_SOURCE_DIR}/library_binaries/bin"
+        $<TARGET_FILE_DIR:${PROJECT_NAME}>)
 
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
