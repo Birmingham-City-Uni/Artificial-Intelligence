@@ -23,25 +23,18 @@ add_executable (${PROJECT_NAME} ${SOURCE})
 set(SDL2_IMAGE_LIBRARIES "${PROJECT_SOURCE_DIR}/library_binaries/lib/SDL2_image.lib")
 set(SDL2_MIXER_LIBRARIES "${PROJECT_SOURCE_DIR}/library_binaries/lib/SDL2_mixer.lib")
 set(SDL2_TTF_LIBRARIES "${PROJECT_SOURCE_DIR}/library_binaries/lib/SDL2_ttf.lib")
-set(LIBS_DEBUG "${PROJECT_SOURCE_DIR}/library_binaries/lib/Debug/ArtificialIntelligenceDLL.lib") 
-set(LIBS_RELEASE "${PROJECT_SOURCE_DIR}/library_binaries/lib/Release/ArtificialIntelligenceDLL.lib") 
+set(LIBS "${PROJECT_SOURCE_DIR}/library_binaries/lib/ArtificialIntelligenceDLL.lib") 
 
 add_custom_command(TARGET ${PROJECT_NAME} PRE_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
         "${PROJECT_SOURCE_DIR}/library_binaries/bin"
         $<TARGET_FILE_DIR:${PROJECT_NAME}>)
 
-add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_directory
-        "${PROJECT_SOURCE_DIR}/library_binaries/bin/$<CONFIGURATION>"
-        $<TARGET_FILE_DIR:${PROJECT_NAME}>)
-
 target_link_libraries(${PROJECT_NAME} ${SDL2_IMAGE_LIBRARIES})
 target_link_libraries(${PROJECT_NAME} ${SDL2_MIXER_LIBRARIES})
 target_link_libraries(${PROJECT_NAME} ${SDL2_TTF_LIBRARIES})
 target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARIES})
-target_link_libraries(${PROJECT_NAME} $<$<CONFIG:Debug>:${LIBS_DEBUG}> 
-        $<$<CONFIG:Release>:${LIBS_RELEASE}>)
+target_link_libraries(${PROJECT_NAME} ${LIBS})
 
 function (SetFolder src dst var )
     FILE(GLOB src

@@ -51,7 +51,7 @@ echo Installing AI Library
 cd external\ai-library
 if not exist "build" mkdir build
 cd build
-cmake -G "Visual Studio 17 2022" -A x64 -DCMAKE_BUILD_TYPE=Release -S ./../ -B "x64"
+cmake -G "Visual Studio 17 2022" -A x64 -DCMAKE_BUILD_TYPE=Release -S ./../ -B "x64" -DCMAKE_PREFIX_PATH=%library_binaries%
 cmake --build x64 --config Release --parallel
 cmake --install x64 --prefix %library_binaries% --config Release 
 cd ../../..
